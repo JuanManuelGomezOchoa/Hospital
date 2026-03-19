@@ -14,7 +14,6 @@ def create_doctor():
     """POST - Crear un nuevo doctor"""
     data = request.get_json()
     
-    # Validación básica
     if not data.get('nombre') or not data.get('apellidos') or not data.get('especialidad'):
         return jsonify({'success': False, 'error': 'Faltan campos requeridos'}), 400
     

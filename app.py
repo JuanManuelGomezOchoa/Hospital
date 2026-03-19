@@ -1,10 +1,12 @@
 import os
 from flask import Flask
+from flask_cors import CORS
 from config import Config
 from extensions import db
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config.from_object(Config)
     
     db.init_app(app)
@@ -21,7 +23,7 @@ def create_app():
     
     with app.app_context():
         db.create_all()
-        print("✅ Base de datos lista")
+        print("Base de datos lista")
     
     return app
 
